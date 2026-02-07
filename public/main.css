@@ -1,0 +1,203 @@
+/* public/main.css */
+:root {
+    --bg: #0f1722;
+    --panel: #0b1320;
+    --accent: #14b8a6;
+    --muted: #94a3b8;
+    --btn-bg: #1f2937;
+    --btn-press: #065f46;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: #e6eef6;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* columns */
+.left-column,
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.center-column {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* sticks */
+.stick-area {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(180deg, #0b1220, #0b0f15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) inset;
+}
+
+/* D-pad */
+.dpad {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+
+.dpad-btn {
+    background: var(--btn-bg);
+    border: none;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.dpad-row {
+    display: flex;
+    gap: 6px;
+}
+
+.dpad-btn.center {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+/* face buttons */
+.face-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+
+.face-row {
+    display: flex;
+    gap: 6px;
+}
+
+/* buttons */
+.btn {
+    background: var(--btn-bg);
+    border: none;
+    color: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.btn.big {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+}
+
+.btn.small {
+    width: 80px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.btn.tiny {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* triggers */
+.triggers {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.trigger {
+    width: 140px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: var(--btn-bg);
+}
+
+/* status */
+.status {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+#status-text {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* tactile press */
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) inset;
+    background: var(--btn-press);
+    color: #fff;
+}
+
+/* responsive tweaks */
+@media (max-width:800px) {
+    #app {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px;
+    }
+
+    .center-column {
+        width: 100%;
+        order: 2;
+    }
+
+    .left-column,
+    .right-column {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .stick-area {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+#enable-gyro {
+    margin-top: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    cursor: pointer;
+}
