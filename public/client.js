@@ -1,5 +1,21 @@
 // public/client.js
 (() => {
+
+  const urlParams = new URLSearchParams(window.location.search);
+  let scale = parseFloat(urlParams.get('scale') || '1');
+
+  // Clamp scale to reasonable range
+  scale = 1.2
+
+  const container = document.getElementById('scale-container');
+  if (container) {
+    container.style.transform = `scale(${scale})`;
+
+    // Optional: adjust container size to avoid clipping
+    container.style.width = `${100 / scale}%`;
+    container.style.height = `${100 / scale}%`;
+  }
+
   const socket = io();
 
   // ===============================
@@ -14,6 +30,7 @@
   const statusText = document.getElementById('status-text');
   const serverIpDiv = document.getElementById('server-ip');
   const gyroButton = document.getElementById('enable-gyro');
+  const fullscreenButton = document.getElementById('enable-fullscreen');
   const gyroDebug = document.getElementById('gyro-debug');
 
   socket.on('connect', () => statusText.textContent = 'Connected');
@@ -182,4 +199,13 @@
   }
 
   gyroButton.addEventListener('click', startGyro);
+
+  async function setFullscreen() {
+    const docEl = document.documentElement;
+    if (docEl.requestFullscreen) docEl.requestFullscreen();
+    else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+    else if (docEl.msRequestFullscreen) docEl.msRequestFullscreen();
+  }
+
+  fullscreenButton.addEventListener('click', setFullscreen);
 })();

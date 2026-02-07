@@ -15,93 +15,72 @@
   <!-- socket.io client CDN (will match server version) -->
   <script src="/socket.io/socket.io.js"></script>
 
-  <style>
-    /* Gyro debug styles */
-    #gyro-section {
-      margin-top: 0.5rem;
-      padding: 0.5rem;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    #enable-gyro {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #14b8a6;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    #enable-gyro:disabled {
-      background-color: #0f766e;
-      opacity: 0.8;
-    }
-
-    #gyro-debug {
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: #eee;
-      margin-top: 0.25rem;
-    }
-  </style>
 </head>
 
 <body>
-  <div id="app">
-    <!-- LEFT COLUMN -->
-    <div class="left-column">
-      <button class="trigger" data-trigger="RT">RT</button>
-      <button class="trigger" data-trigger="RB">RB</button>
+  <div id="scale-container">
+    <div id="app">
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+        <button class="trigger" data-trigger="RT">RT</button>
+        <button class="trigger" data-button="RB">RB</button>
 
-      <div id="left-stick" class="stick-area"></div>
-      <!-- <div class="dpad">
-        <button class="dpad-btn" data-dir="up">▲</button>
-        <div class="dpad-row">
-          <button class="dpad-btn" data-dir="left">◀</button>
-          <button class="dpad-btn center" data-dir="center">●</button>
-          <button class="dpad-btn" data-dir="right">▶</button>
+        <div class="control-box">
+          <div id="left-stick" class="stick-area"></div>
         </div>
-        <button class="dpad-btn" data-dir="down">▼</button>
+        <!-- <div class="control-box">
+        <div class="dpad">
+          <button class="dpad-btn" data-dir="up">▲</button>
+          <div class="dpad-row">
+            <button class="dpad-btn" data-dir="left">◀</button>
+            <button class="dpad-btn center" data-dir="center">●</button>
+            <button class="dpad-btn" data-dir="right">▶</button>
+          </div>
+          <button class="dpad-btn" data-dir="down">▼</button>
+        </div>
       </div> -->
-    </div>
-
-    <!-- CENTER COLUMN -->
-    <div class="center-column">
-      <div class="triggers">
       </div>
-      <div class="status">
-        <div id="status-text">Connecting...</div>
-        <div id="server-ip"></div>
 
-        <!-- Gyroscope section -->
-        <div id="gyro-section">
-          <button id="enable-gyro">Enable Gyroscope</button>
-          <div id="gyro-debug">β: 0 γ: 0 α: 0</div>
+      <!-- CENTER COLUMN -->
+      <div class="center-column">
+        <div class="triggers">
         </div>
+        <div class="status">
+          <div id="status-text">Connecting...</div>
+          <div id="server-ip"></div>
 
-        <div class="misc">
-          <button class="btn tiny" data-button="BACK">Back</button>
-          <button class="btn tiny" data-button="START">Start</button>
+          <!-- Gyroscope section -->
+          <div id="gyro-section">
+            <button id="enable-gyro">Enable Gyroscope</button>
+            <div id="gyro-debug">β: 0 γ: 0 α: 0</div>
+            <button id="enable-fullscreen">Go Fullscreen</button>
+          </div>
+
+          <div class="misc">
+            <button class="btn tiny" data-button="BACK">Back</button>
+            <button class="btn tiny" data-button="START">Start</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="right-column">
-      <button class="trigger" data-trigger="LT">LT</button>
-      <button class="trigger" data-trigger="LB">LB</button>
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <button class="trigger" data-trigger="LT">LT</button>
+        <button class="trigger" data-button="LB">LB</button>
 
-      <!-- <div id="right-stick" class="stick-area"></div> -->
-      <div class="face-buttons">
-        <button class="btn big" data-button="Y">Y</button>
-        <div class="face-row">
-          <button class="btn big" data-button="X">X</button>
-          <button class="btn big" data-button="A">A</button>
+        <!-- <div class="control-box">
+        <div id="right-stick" class="stick-area"></div>
+      </div> -->
+        <div class="control-box">
+          <div class="face-buttons">
+            <button class="btn big" data-button="Y">Y</button>
+            <div class="face-row">
+              <button class="btn big" data-button="X">X</button>
+              <button class="btn big" data-button="A">A</button>
+            </div>
+            <button class="btn big" data-button="B">B</button>
+          </div>
         </div>
-        <button class="btn big" data-button="B">B</button>
       </div>
     </div>
   </div>
