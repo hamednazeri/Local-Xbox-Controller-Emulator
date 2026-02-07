@@ -9,6 +9,9 @@ import os from 'os';
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
+// Xbox supports max 4 controllers
+export const MAX_CONTROLLERS = 4;
+
 async function start() {
     const app = express();
     const server = http.createServer(app);
@@ -21,16 +24,16 @@ async function start() {
     const publicPath = path.join(__dirname, '..', 'public');
     app.use(express.static(publicPath));
 
-    app.get('/test', (req, res) => {
+    app.get('/test', (_req, res) => {
         res.send('Server is working!');
     });
 
     // info route
-    app.get('/_status', (req, res) => {
-        res.json({ vigemConnected: vigem.connected });
+    app.get('/_status', (_req, res) => {
+        res.json({ vigemConnected: vigem.isConnected });
     });
 
-    // sockets
+    // 👇 multi-controller logic lives here
     setupSocketIO(io);
 
     // start server
@@ -68,7 +71,7 @@ async function start() {
     });
 }
 
-start().catch((err) => {
-    console.error('Fatal error starting server:', err);
+start().catch(err => {
+    console.error('Fatal error:', err);
     process.exit(1);
 });
