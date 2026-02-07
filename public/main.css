@@ -152,13 +152,13 @@ body {
     transform: translateY(-50%);
 }
 
-.btn[data-button="A"] {
+.btn[data-button="B"] {
     top: 50%;
     left: 100%;
     transform: translate(-100%, -50%);
 }
 
-.btn[data-button="B"] {
+.btn[data-button="A"] {
     top: 100%;
     left: 50%;
     transform: translate(-50%, -100%);
